@@ -67,6 +67,19 @@ export class SynoClient {
     };
 
     // Disable SSL verification when certVerify is false (default)
+    if (config.certVerify !== true) {
+      if (typeof globalThis.Bun !== 'undefined') {
+        // Bun: custom fetch with tls option
+        kyOptions.fetch = (input, init) => globalThis.fetch(input, {
+          ...init,
+          tls: { rejectUnauthorized: false },
+        });
+      } else {
+        // Node.js: environment variable
+        process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+      }
+    }
+
     this.kyInstance = ky.create(kyOptions);
   }
 
@@ -424,9 +437,10 @@ export class SynoClient {
     options?: RequestOptions,
   ): Promise<SynoResponse<T>> {
     const normalized = normalizeBooleans(params);
+    normalized['api'] = apiName;
     normalized['_sid'] = this.sid ?? '';
 
-    const url = `${apiPath}?api=${apiName}`;
+    const url = apiPath;
     const method = options?.method ?? 'get';
     const headers = this.buildHeaders();
 
