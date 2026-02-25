@@ -1,11 +1,41 @@
 {
   "name": "synology-api-js",
   "version": "0.1.0",
+  "description": "TypeScript wrapper for Synology DSM API (Bun/Node.js)",
   "module": "src/index.ts",
   "type": "module",
-  "private": true,
   "exports": {
     ".": "./src/index.ts"
+  },
+  "files": [
+    "src",
+    "README.md"
+  ],
+  "keywords": [
+    "synology",
+    "nas",
+    "dsm",
+    "api",
+    "filestation",
+    "download-station",
+    "surveillance-station",
+    "docker",
+    "typescript",
+    "bun"
+  ],
+  "author": "whoishina",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/whoishina/synology-api-js.git"
+  },
+  "homepage": "https://github.com/whoishina/synology-api-js#readme",
+  "bugs": {
+    "url": "https://github.com/whoishina/synology-api-js/issues"
+  },
+  "engines": {
+    "bun": ">=1.0.0",
+    "node": ">=18.0.0"
   },
   "dependencies": {
     "ky": "^1.7.5",
