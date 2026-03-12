@@ -11,10 +11,10 @@ TypeScript wrapper for the Synology DSM API, ported from [N4S4/synology-api](htt
 
 ```bash
 # Bun (recommended)
-bun install
+bun i synology-api-js
 
-# Node.js
-npm install
+# npm
+npm i synology-api-js
 ```
 
 ## Quick Start
